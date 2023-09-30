@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Leaflet example in one file</title>
+
+    <!-- include leaflet css and javascript -->
+    <link rel="stylesheet" crossorigin=""
+          href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js"
+            crossorigin=""></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<script>
+    /*
+    the script mus be loaded after the map div is defined,
+    otherwise this will not work. Therefore the script is below
+    the div.
+
+    The source code below is the example from the leaflet start page.
+    */
+
+    var map = L.map('map').setView([35.774929, -5.803528], 13);
+
+    L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var marker = L.marker([35.774929, -5.803528]).addTo(map);
+    marker.bindPopup('Zakaria Store', {
+        html: '<a href="Data/Zstore.html">Link to Kharita</a>'
+    });
+    marker.on('click', function() {
+        window.open('Data/Zstore.html');
+    });
+    marker.openPopup();
+</script>
+</body>
+</html>
